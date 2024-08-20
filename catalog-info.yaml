@@ -1,0 +1,42 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: MediaPlannerService-app
+  annotations:
+    "backstage.io/project": "png-gcp-learning-poc"
+    "backstage.io/cloud-run": "MediaPlannerService"
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: monkmantra/MediaPlannerService-app
+    sonarqube.org/project-key: ltimindtreeSonarqube/MediaPlannerService
+  links:
+    - url: "https://MediaPlannerService-nraemwfzfa-uk.a.run.app"
+      title: Application URL
+      icon: extension
+    - url: "https://console.cloud.google.com/run/detail/us-east4/MediaPlannerService/logs?project=png-gcp-learning-poc"
+      title: Logs
+      icon: dashboard
+  tags:
+    - de-ims-app
+spec:
+  type: service
+  owner: user:de-ims
+  lifecycle: experimental
+  dependsOn:
+    - component:default/MediaPlannerService-infra
+  providesApis:
+    - MediaPlannerService
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: MediaPlannerService
+  description: The App APIs Specification. Service that is used for social media campaign planning
+  tags:
+    - fastapi
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: user:de-ims
+  definition:
+    $text: ./fastapi.yaml

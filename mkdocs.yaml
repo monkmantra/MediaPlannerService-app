@@ -1,0 +1,7 @@
+site_name: MediaPlannerService
+site_description: Service that is used for social media campaign planning
+
+nav:
+  - Home: index.md
+  - API Endpoints: endpoints.md
+  - Tech Stack: techstack.md
